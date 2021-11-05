@@ -1,0 +1,46 @@
+.main-inputs-header
+{
+    margin: auto;
+    margin-top: 10px;
+    width: 90%;
+    border-radius: 5px;
+    min-height: 80px;
+    background-color: rgb(127, 251, 255);
+    text-align: center;
+    padding: 5px;
+    box-sizing: border-box;
+    padding-top: 20px;
+}
+
+#my-input-edit
+{
+    width: 80%;
+    border-radius: 5px;
+}
+
+#my-button
+{
+    border: none;
+    width: 100px;
+    margin-right: 5px;
+    border-radius: 4px;
+}
+
+.content-skills-itself
+{
+    width: 80%;
+    background-color: rgb(255, 184, 184);
+    margin: auto;
+    margin-top: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.skills-values
+{
+    margin: auto;
+    min-width: 20px;
+    background-color: aqua;
+    margin: 5px;
+}
