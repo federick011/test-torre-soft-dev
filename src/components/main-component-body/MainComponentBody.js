@@ -17,15 +17,36 @@ export default function MainComponentBody()
     {
         if(userName !== "")
         {
-            fetch('/api/bios/'+userName)
-            .then(res => res.json())
-            .then(json => setUserFound(json));
+            
+
+            fetch('/api/bios/'+userName,{
+                headers : { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            }).then(function(response){
+                console.log(response)
+                return response.json();
+            }).then(function(myJson) {
+                console.log(myJson);
+                setUserFound(myJson)
+            });
         }
         else//the default profile that appears
         {
-            fetch('/api/bios/torrenegra')
-            .then(res => res.json())
-            .then(json => setUserFound(json));
+            
+            fetch('/api/bios/torrenegra',{
+                headers : { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            }).then(function(response){
+                console.log(response)
+                return response.json();
+            }).then(function(myJson) {
+                console.log(myJson);
+                setUserFound(myJson)
+            });
         } 
     }
 
@@ -57,6 +78,7 @@ export default function MainComponentBody()
     );
 }
 
+//=====================================================================
 //This Function Show the skills of the current user
 function ShowUserSkills(userFound)
 {
@@ -68,7 +90,7 @@ function ShowUserSkills(userFound)
             {
                 StringInfoUser[indexItem, index] =( 
                     <div key={index} className="skills-values">
-                        {JSON.stringify(item.name)}
+                        {item.name}
                     </div> 
                 )
             }
