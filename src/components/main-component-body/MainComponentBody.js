@@ -22,7 +22,6 @@ export default function MainComponentBody()
             .then(json => setUserFound(json));*/
 
             fetch('/api/bios/'+userName,{
-
             }).then(function(response){
                 console.log(response)
                 return response.json();
