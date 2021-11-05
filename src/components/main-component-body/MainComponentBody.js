@@ -18,7 +18,6 @@ export default function MainComponentBody()
     {
         if(userName !== "")
         {
-            userName.toString().toLowerCase();
             fetch('/api/bios/'+userName)
             .then(res => res.json())
             .then(json => setUserFound(json));
