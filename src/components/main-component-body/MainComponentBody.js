@@ -3,7 +3,7 @@ import React, { useState, useEffect, createRef } from 'react';
 import './css/StyleMainBody.css'
 
 //Components
-import UserInfoComponent from '../UserInfoComponent';
+import UserInfoComponent from './UserInfoComponent';
 
 export default function MainComponentBody()
 {
