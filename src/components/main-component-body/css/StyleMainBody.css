@@ -15,14 +15,18 @@
 {
     min-width: 200px;
     border-radius: 5px;
+    border-color: rgb(205, 220, 57);
+    background-color: rgba(41, 41, 41, 0);
+    color: #888888;
 }
 
 #my-button
 {
     border: none;
     width: 100px;
-    margin-right: 5px;
+    margin-left: 10px;
     border-radius: 4px;
+    background-color: rgba(204, 220, 57, 0.801);
 }
 
 .content-profile-itself

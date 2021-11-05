@@ -17,7 +17,9 @@ export default function MainComponentBody()
     {
         if(userName !== "")
         {
-            
+            /*fetch('/api/bios/'+userName)
+            .then(res => res.json())
+            .then(json => setUserFound(json));*/
 
             fetch('/api/bios/'+userName,{
                 headers : { 
@@ -34,7 +36,9 @@ export default function MainComponentBody()
         }
         else//the default profile that appears
         {
-            
+            /*fetch('/api/bios/torrenegra')
+            .then(res => res.json())
+            .then(json => setUserFound(json));*/
             fetch('/api/bios/torrenegra',{
                 headers : { 
                     'Content-Type': 'application/json',
