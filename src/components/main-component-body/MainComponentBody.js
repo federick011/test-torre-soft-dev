@@ -17,13 +17,13 @@ export default function MainComponentBody()
     {
         if(userName !== "")
         {
-            fetch('/api/bios/'+userName)
+            fetch('https://bio.torre.co/api/bios/'+userName)
             .then(res => res.json())
             .then(json => setUserFound(json));
         }
         else
         {
-            fetch('/api/bios/torrenegra')
+            fetch('https://bio.torre.co/api/bios/torrenegra')
             .then(res => res.json())
             .then(json => setUserFound(json));
         } 
