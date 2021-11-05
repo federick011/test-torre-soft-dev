@@ -8,6 +8,7 @@ export default function UserInfoComponent({props})
 
                 {props[1]}
                 {props[2]}
+                <hr/>
                 {props[0]}
                 
             </div>

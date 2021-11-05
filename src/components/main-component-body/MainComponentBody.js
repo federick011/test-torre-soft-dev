@@ -22,6 +22,10 @@ export default function MainComponentBody()
             .then(json => setUserFound(json));*/
 
             fetch('/api/bios/'+userName,{
+                headers : { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
             }).then(function(response){
                 console.log(response)
                 return response.json();
@@ -36,7 +40,10 @@ export default function MainComponentBody()
             .then(res => res.json())
             .then(json => setUserFound(json));*/
             fetch('/api/bios/torrenegra',{
-
+                headers : { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
             }).then(function(response){
                 console.log(response)
                 return response.json();
@@ -170,6 +177,11 @@ function ShowUserName(userFound)
                     <span 
                         style={{color:"rgb(205, 220, 57)"}}>User Id:
                     </span> {userFound.person.publicId}</h3>
+                    <h4>
+                        <span>About:</span>
+                        <p/>
+                         {userFound.person.professionalHeadline}
+                    </h4>
                 </div>
              );
         } catch(e) {console.error(e);}

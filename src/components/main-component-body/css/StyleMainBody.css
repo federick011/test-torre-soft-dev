@@ -36,7 +36,7 @@
     margin: auto;
     margin-top: 8px;
     box-sizing: border-box;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 10px;
     box-shadow: 1px 1px 1px #888888;
 }
@@ -51,6 +51,16 @@
 .user-names
 {
     text-align: center;
+}
+
+.user-names h4
+{
+    margin: auto;
+    width: 90%;
+    padding: 5px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: rgb(70, 72, 77);
 }
 
 .avatar-div img
