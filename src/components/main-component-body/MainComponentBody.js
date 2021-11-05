@@ -21,7 +21,7 @@ export default function MainComponentBody()
             .then(res => res.json())
             .then(json => setUserFound(json));
         }
-        else
+        else//the default profile that appears
         {
             fetch('/api/bios/torrenegra')
             .then(res => res.json())
