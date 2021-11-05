@@ -68,7 +68,7 @@ function ShowUserSkills(userFound)
             {
                 StringInfoUser[indexItem, index] =( 
                     <div key={index} className="skills-values">
-                        {item.name}
+                        {JSON.stringify(item.name)}
                     </div> 
                 )
             }
@@ -146,9 +146,11 @@ function ShowUserName(userFound)
         try{ 
             UserNameId = (
                 <div className="user-names">
-                   <h3> Name: {userFound.person.name} 
+                   <h3 > {userFound.person.name} 
                    <p/>
-                    User Id: {userFound.person.publicId}</h3>
+                    <span 
+                        style={{color:"rgb(205, 220, 57)"}}>User Id:
+                    </span> {userFound.person.publicId}</h3>
                 </div>
              );
         } catch(e) {console.error(e);}
