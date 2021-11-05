@@ -4,10 +4,12 @@ export default function UserInfoComponent({props})
 {
     return(
         <React.Fragment>
-            <div className="content-skills-itself">
-                {props}
+            <div className="content-profile-itself">
+                {props[1]}
+                {props[2]}
+                {props[0]}
+                
             </div>
-            
         </React.Fragment>
     );
 }

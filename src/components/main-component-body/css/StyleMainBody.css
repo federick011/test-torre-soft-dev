@@ -1,15 +1,13 @@
 .main-inputs-header
 {
     margin: auto;
-    margin-top: 10px;
-    width: 90%;
-    border-radius: 5px;
+    width: 100%;
     min-height: 80px;
-    background-color: rgb(127, 251, 255);
+    background-color: rgb(39, 41, 45);
     text-align: center;
     padding: 5px;
     box-sizing: border-box;
-    padding-top: 20px;
+    padding-top: 5px;
 }
 
 #my-input-edit
@@ -26,21 +24,53 @@
     border-radius: 4px;
 }
 
-.content-skills-itself
+.content-profile-itself
 {
     width: 80%;
     background-color: rgb(255, 184, 184);
     margin: auto;
-    margin-top: 20px;
+    margin-top: 5px;
     box-sizing: border-box;
     border-radius: 5px;
     padding: 10px;
 }
 
-.skills-values
+.avatar-div
+{
+    width: 30%;
+    max-width: 200px;
+    margin: auto;
+}
+
+.user-names
+{
+    text-align: center;
+}
+
+.avatar-div img
+{
+    width: 100%;
+    border: solid 5px rgb(175, 175, 175);
+    border-radius: 50%;
+}
+
+.levels-skills-div
 {
     margin: auto;
-    min-width: 20px;
+    padding-left: 10%;
+}
+.skills-content
+{
+    margin-top: 10px;
+    box-sizing:border-box;
+}
+
+.skills-values
+{
     background-color: aqua;
+    max-width: 200px;
     margin: 5px;
+    padding: 2px;
+    border-radius: 10px;
+    text-align: center;
 }

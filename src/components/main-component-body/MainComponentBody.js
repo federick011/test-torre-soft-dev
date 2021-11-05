@@ -11,7 +11,6 @@ export default function MainComponentBody()
     let TextSearchValue = createRef();//Ref to the input to find users
     //hooks
     const [userFound, setUserFound] = useState();//To get the Json from the function that bring it "GotUserApi()"
-    const [infoUserShare, setInfoUserShare] = useState();//To share the info from the user to a component child
 
     //we get the user required from the API
     async function GotUserApi(userName)
@@ -24,7 +23,7 @@ export default function MainComponentBody()
         }
         else
         {
-            fetch('/api/bios/null')
+            fetch('/api/bios/torrenegra')
             .then(res => res.json())
             .then(json => setUserFound(json));
         } 
@@ -33,14 +32,11 @@ export default function MainComponentBody()
     //This function is called by our button
     function FuncToFindUser()
     {
-        let StringUserName = TextSearchValue.current.value;
-        GotUserApi(StringUserName);
-        setInfoUserShare(ShowUserSkills(userFound));
+        GotUserApi(TextSearchValue.current.value);
     }
 
     useEffect(() => {
-        let StringUserName = TextSearchValue.current.value;
-        GotUserApi(StringUserName);
+        GotUserApi(TextSearchValue.current.value);
     }, [])
 
     //console.log("lol "+((userFound !== undefined) && JSON.stringify(userFound.strengths[0].name)).replace(/"/g, " "));
@@ -48,11 +44,14 @@ export default function MainComponentBody()
         <main>
             <section>
                 <div className="main-inputs-header">
+                    <h3>Enter the user Id to start the search</h3>
                     <input ref={TextSearchValue} id="my-input-edit" type="text" placeholder="Find User"/>
                     <button id="my-button" placeholder="Search" onClick={FuncToFindUser}>Search</button>
                 </div>
 
-                <UserInfoComponent props={[infoUserShare]} />
+                <UserInfoComponent props={[ShowUserSkills(userFound), 
+                                            ShowUserAvatar(userFound),
+                                            ShowUserName(userFound)]} />
             </section>
         </main>
     );
@@ -61,26 +60,102 @@ export default function MainComponentBody()
 //This Function Show the skills of the current user
 function ShowUserSkills(userFound)
 {
-    let StringInfoUser =[];
+    //To organize the skills levels
+    const MapSkills = (indexItem, StringValueItem) =>{
+        let StringInfoUser =[,];
+        userFound.strengths.map((item, index) =>{
+            if(item.proficiency === StringValueItem)
+            {
+                StringInfoUser[indexItem, index] =( 
+                    <div key={index} className="skills-values">
+                        {item.name}
+                    </div> 
+                )
+            }
+        })
+
+        return (StringInfoUser);
+    }
+
+    let skillLevels;
     if(userFound !== undefined && userFound !== null)
     {
         if(userFound.strengths !== undefined)
         {
-            userFound.strengths.map((item, index) =>{
-                StringInfoUser[index] =( 
-                    <div key={index} className="skills-values">
-                        {JSON.stringify(item.name).replace(/"/g, " ")}
-                    </div> 
-                )
-            })
-        }
-        else if(userFound.message === "Person not found!")
-        {
-            StringInfoUser[0]= "404";
+            skillLevels = (
+                <div className="levels-skills-div">
+
+                    <h4>Master / Influencer</h4>
+                    {MapSkills(4, "master")}
+                    <h4>Expert</h4>
+                    {MapSkills(3, "expert")}
+                    <h4>Proficient</h4>
+                    {MapSkills(2, "proficient")}
+                    <h4>Novice</h4>
+                    {MapSkills(1, "novice")}
+                    <h4>No experience, interested</h4>
+                    {MapSkills(0, "no-experience-interested")}
+                    
+                </div>
+            );
         }
     }
 
     return(
-        StringInfoUser
+        skillLevels
     );
+}
+
+//To get the url of the Avatar
+function ShowUserAvatar(userFound)
+{
+    let UserAvatarUrl="";
+    
+    if(userFound !== undefined && userFound !== null)
+    {
+        try{ 
+            UserAvatarUrl = (
+                <div className="avatar-div">
+                    <img src={userFound.person.picture}/>
+                </div>
+             );
+        } catch(e) { 
+            console.error(e); 
+            
+            if(userFound.message === "Person not found!")
+            {
+                UserAvatarUrl = (
+                    <div className="avatar-div">
+                        <img src="https://f.hubspotusercontent30.net/hub/5943984/hubfs/New%20Icon-1.png?width=108&height=108"/>
+                    </div>
+                );
+            }
+        }
+    }
+
+    return(
+        UserAvatarUrl
+    );
+}
+
+function ShowUserName(userFound)
+{
+    let UserNameId;
+    if(userFound !== undefined && userFound !== null)
+    {
+        try{ 
+            UserNameId = (
+                <div className="user-names">
+                   <h3> Name: {userFound.person.name} 
+                   <p/>
+                    User Id: {userFound.person.publicId}</h3>
+                </div>
+             );
+        } catch(e) {console.error(e);}
+    }
+
+    return(
+        UserNameId
+    );
+
 }
