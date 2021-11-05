@@ -4,6 +4,7 @@
   from = "https://bio.torre.co"
   to = "https://test-torre-soft-dev.netlify.app"
   status = 200
+  force = true
 
 [[headers]]
   # Define which paths this specific [[headers]] block will cover.
